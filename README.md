@@ -19,4 +19,4 @@
 | MISION_BASICA | 4 | 4 | 0 |
 | MISION_CON_ERRORES | 11 | 4 | 7 |
 | MISION_CUADRADO | 9 | 9 | 0 |
-| MISION_PROPIA | 7 | 7 | 0 |
+| MISION_PROPIA | 10 | 7 | 3 |

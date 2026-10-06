@@ -174,22 +174,26 @@ Python 3.14.4, pip 26.0.1 y Git 2.55.0 ya estaban disponibles; el IDE es Visual 
 
 ## Etapa 9: MISION_PROPIA
 
-**Misión:** `MISION_PROPIA` (7 comandos), diseñada por mí:
+**Misión:** `MISION_PROPIA` (10 comandos), diseñada por nosotros. Es un zigzag con desvío lateral que incluye 3 comandos inválidos a propósito:
 
-| # | Comando | Efecto |
-|---|---|---|
-| 1 | `avanzar(0.15, 2.0)` | avanza 0.30 m |
-| 2 | `girar(-0.4, 1.57)` | gira ≈ 0.63 rad (36°) a la derecha |
-| 3 | `avanzar(0.20, 3.0)` | avanza 0.60 m |
-| 4 | `girar(0.4, 1.57)` | gira ≈ 36° a la izquierda (recupera el rumbo original) |
-| 5 | `avanzar(0.15, 2.0)` | avanza 0.30 m |
-| 6 | `saludar` | saluda |
-| 7 | `detenerse` | frena |
+| # | Comando | Tipo | Efecto esperado |
+|---|---|---|---|
+| 1 | `avanzar(0.15, 2.0)` | válido | avanza 0.30 m |
+| 2 | `girar(-0.4, 1.57)` | válido | gira ≈ 36° a la derecha |
+| 3 | `("bailar",)` | **inválido** | rechazado por sintaxis: comando inexistente |
+| 4 | `avanzar(0.20, 3.0)` | válido | avanza 0.60 m |
+| 5 | `girar(0.4, 1.57)` | válido | gira ≈ 36° a la izquierda (recupera el rumbo) |
+| 6 | `avanzar(0.5, 2.0)` | **inválido** | rechazado por seguridad: supera 0.20 m/s |
+| 7 | `avanzar(0.15, 2.0)` | válido | avanza 0.30 m |
+| 8 | `("avanzar", 0.15)` | **inválido** | rechazado por sintaxis: falta el tiempo |
+| 9 | `saludar` | válido | saluda |
+| 10 | `detenerse` | válido | frena |
 
-**Diseño:** un zigzag con desvío lateral: el robot se aparta del rumbo original hacia la derecha, avanza el tramo más largo, vuelve a enderezarse y termina avanzando y saludando. Todos los valores respetan los límites (≤ 0.2 m/s, ≤ 0.5 rad/s, ≤ 10 s).
+**Diseño:** el robot se aparta del rumbo original hacia la derecha, avanza el tramo más largo, se endereza y termina avanzando y saludando. Los comandos válidos respetan los límites (≤ 0.2 m/s, ≤ 0.5 rad/s, ≤ 10 s). Los inválidos cubren los dos tipos de rechazo: validación previa y `ErrorDeSeguridad`.
 
-**Resultado:** 7 ejecutados, 0 rechazados. Reporte final generado.
+**Resultado (COMPLETAR con lo que muestre la captura):** 7 ejecutados, 3 rechazados. Reporte final generado.
 
 **Observación:** en la ventana, el Go2 quedó desplazado respecto de su posición inicial. No se midió la distancia exacta.
 
 **Evidencia:** `evidencias/06_misiones/04_mision_propia.png`
+
