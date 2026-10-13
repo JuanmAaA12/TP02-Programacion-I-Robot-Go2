@@ -168,12 +168,26 @@ def generar_reporte(historial):
     ejecutados = sum(1 for registro in historial if registro["estado"] == "Ejecutado")
     rechazados = len(historial) - ejecutados
 
+    distancia_total = 0.0
+    duracion_total = 0.0
+    for registro in historial:
+        if registro["estado"] != "Ejecutado":
+            continue
+        comando = registro["comando"]
+        if comando[0] == "avanzar":
+            distancia_total += abs(comando[1]) * comando[2]
+            duracion_total += comando[2]
+        elif comando[0] == "girar":
+            duracion_total += comando[2]
+
     print("\n" + "=" * 50)
     print("        REPORTE FINAL DE LA MISIÓN")
     print("=" * 50)
     print(f"Total de comandos procesados : {len(historial)}")
     print(f"Comandos ejecutados con éxito: {ejecutados}")
     print(f"Comandos rechazados          : {rechazados}")
+    print(f"Distancia total recorrida    : {round(distancia_total, 2)} m")
+    print(f"Duración estimada            : {round(duracion_total, 2)} s")
 
     if rechazados > 0:
         print("\nDetalle de Rechazos / Omisiones:")

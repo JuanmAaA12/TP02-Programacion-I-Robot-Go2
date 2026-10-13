@@ -16,7 +16,7 @@ El error del `cd`. El mensaje no decía que la carpeta no existiera, por lo que 
 Encerrar la ruta entre comillas dobles. Las comillas indican a PowerShell que toda la ruta es un único argumento. Después de aplicarla se pudo ejecutar la verificación y el simulador.
 
 **d) ¿Qué intento no funcionó y qué aprendieron de él?**
-El `cd` sin comillas. Aprendimos que en PowerShell las rutas con espacios deben ir entre comillas y que conviene evitar espacios en los nombres de carpetas de proyectos. También decidí no modificar los motivos de rechazo por sintaxis, que quedaron genéricos: aprendí a distinguir entre algo que funciona y algo que se puede explicar mejor.
+El `cd` sin comillas. Aprendimos que en PowerShell las rutas con espacios deben ir entre comillas y que conviene evitar espacios en los nombres de carpetas de proyectos. También decidimos no modificar los motivos de rechazo por sintaxis, que quedaron genéricos: aprendí a distinguir entre algo que funciona y algo que se puede explicar mejor.
 
 **e) ¿Qué diferencia encontraron entre una guía antigua y la arquitectura actual?**
 Las guías anteriores usaban distancia/velocidad y ángulo/sentido, y requerían CycloneDDS y el SDK oficial de Unitree. La versión actual usa velocidad y tiempo (distancia = velocidad × tiempo; ángulo = velocidad × tiempo, con el signo indicando el sentido) y se comunica con MuJoCo por un socket local en `127.0.0.1:8765` a través de `robot.py`. Así deja de depender de componentes que fallaban en Windows y macOS, y el código del alumno no cambia.
